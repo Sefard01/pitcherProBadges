@@ -28,10 +28,11 @@ app.get('/api/badge', (req, res) => {
 
   const isForTheBadge = style === 'for-the-badge';
   
-  const fontSize = isForTheBadge ? 11 : 11;
-  const height = isForTheBadge ? 28 : 20;
+  // Dynamic sizing (Sabhi styles ka size ab standard 20px rahega)
+  const fontSize = 11;
+  const height = 20; 
   const radius = style === 'rounded' ? 6 : (isForTheBadge ? 0 : 3);
-  const textY = isForTheBadge ? 18 : 14;
+  const textY = 14;
 
   const labelText = isForTheBadge ? label.toUpperCase() : label;
   const valueText = isForTheBadge ? value.toUpperCase() : value;
@@ -62,7 +63,6 @@ app.get('/api/badge', (req, res) => {
 </svg>
   `.trim();
 
-  // Set response headers for HTTP image caching & GitHub Proxy compatibility
   res.setHeader('Content-Type', 'image/svg+xml');
   res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800');
   
